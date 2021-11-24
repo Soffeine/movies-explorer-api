@@ -49,6 +49,16 @@ const movieSchema = new mongoose.Schema({
     },
   },
 
+  nameRU: {
+    type: String,
+    required: true,
+  },
+
+  nameEN: {
+    type: String,
+    required: true,
+  },
+
   thumbnail: {
     type: String,
     required: true,
@@ -60,26 +70,17 @@ const movieSchema = new mongoose.Schema({
     },
   },
 
+  movieId: {
+    type: String,
+    required: true,
+  },
+
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
     required: true,
   },
 
-  movieId: {
-    type: String,
-    required: true,
-  },
-
-  nameRU: {
-    type: String,
-    required: true,
-  },
-
-  nameEN: {
-    type: String,
-    required: true,
-  },
 });
 
 module.exports = mongoose.model('movie', movieSchema);

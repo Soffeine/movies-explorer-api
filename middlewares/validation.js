@@ -42,7 +42,8 @@ const addToFavouritesValidation = celebrate({
       }
       return url;
     }),
-
+    nameRU: Joi.string().required(),
+    nameEN: Joi.string().required(),
     thumbnail: Joi.string().required().custom((url) => {
       if (!validator.isURL(url, { require_protocol: true })) {
         throw new Error('С ссылкой что-то не так!');
@@ -50,8 +51,6 @@ const addToFavouritesValidation = celebrate({
       return url;
     }),
     movieId: Joi.string().required(),
-    nameRU: Joi.string().required(),
-    nameEN: Joi.string().required(),
   }),
 });
 

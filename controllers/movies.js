@@ -1,6 +1,7 @@
 const Movie = require('../models/movie');
 
 const NotFoundError = require('../errors/not-found-error');
+const ForbiddenError = require('../errors/forbidden-error');
 
 // заргузка сохраненных фильмов
 const getMovies = (req, res, next) => {
@@ -53,10 +54,17 @@ const addMovieToFavourites = (req, res, next) => {
 // удаление фильма их сохраненных
 const deleteMovieFromFavourites = (req, res, next) => {
   const { movieId } = req.params;
-  return Movie.findByIdAndDelete(movieId)
-    .orFail(() => new NotFoundError('такого фильма нет в вашем избранном'))
+  return Movie.findById(movieId)
+    .orFail(() => new NotFoundError('Такого фильма нет в вашем избранном'))
     .then((movie) => {
-      res.send({ data: movie });
+      if (!movie.owner.equals(req.user._id)) {
+        next(new ForbiddenError('У вас нет прав удалять этот фильм из коллекции'));
+      } else {
+        Movie.deleteOne(movie)
+          .then(() => {
+            res.send({ data: movie });
+          });
+      }
     })
     .catch(next);
 };

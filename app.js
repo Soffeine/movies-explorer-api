@@ -1,9 +1,11 @@
 require('dotenv').config();
 
 const express = require('express');
-const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 
 const app = express();
+
+const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
@@ -38,6 +40,13 @@ mongoose.connect('mongodb://localhost:27017/beatfilmsdb', {
   useNewUrlParser: true,
 });
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+});
+
+app.use(limiter);
+
 app.use('*', cors(options));
 
 app.use(bodyParser.json());
@@ -54,7 +63,6 @@ app.post('/signin', signInValidation, login);
 app.post('/signout', (req, res) => {
   res
     .clearCookie('jwt')
-    .redirect('/signin')
     .end();
 });
 
