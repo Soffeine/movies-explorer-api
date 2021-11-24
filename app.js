@@ -14,7 +14,7 @@ const options = {
   origin: [
     'http://localhost:3000',
     'https://localhost:3000',
-    // плюс еще будет фронт-домен
+    'https://beatfilm.sof.nomoredomains.work',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
