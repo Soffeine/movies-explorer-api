@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const express = require('express');
 const helmet = require('helmet');
-// добавить переменные окружения и не забыть пофиксить все в других файлах
 
 const app = express();
 const cookieParser = require('cookie-parser');
