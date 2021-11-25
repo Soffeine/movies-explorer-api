@@ -50,7 +50,7 @@ const addToFavouritesValidation = celebrate({
       }
       return url;
     }),
-    movieId: Joi.string().required(),
+    movieId: Joi.number().required(),
   }),
 });
 

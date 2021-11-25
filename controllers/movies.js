@@ -63,7 +63,8 @@ const deleteMovieFromFavourites = (req, res, next) => {
         Movie.deleteOne(movie)
           .then(() => {
             res.send({ data: movie });
-          });
+          })
+          .catch(next);
       }
     })
     .catch(next);
