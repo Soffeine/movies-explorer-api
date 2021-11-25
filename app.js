@@ -25,6 +25,11 @@ const options = {
   credentials: true,
 };
 
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+});
+
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const signupRoute = require('./routes/signup');
@@ -38,11 +43,6 @@ const NotFoundError = require('./errors/not-found-error');
 
 mongoose.connect('mongodb://localhost:27017/beatfilmsdb', {
   useNewUrlParser: true,
-});
-
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
 });
 
 app.use(requestLogger);
