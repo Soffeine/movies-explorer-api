@@ -9,7 +9,7 @@ const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, NODE_ENV, DB_CONNECT } = process.env;
 const cors = require('cors');
 
 const options = {
@@ -41,7 +41,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const NotFoundError = require('./errors/not-found-error');
 
-mongoose.connect('mongodb://localhost:27017/beatfilmsdb', {
+mongoose.connect(NODE_ENV === 'production' ? DB_CONNECT : 'mongodb://localhost:27017/beatfilmsdb', {
   useNewUrlParser: true,
 });
 
