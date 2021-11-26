@@ -9,7 +9,7 @@ const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-const { PORT = 3000 } = process.env;
+const { PORT } = process.env;
 const cors = require('cors');
 
 const options = {
