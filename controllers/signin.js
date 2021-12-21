@@ -33,7 +33,11 @@ const login = (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
 
-      }).sendStatus(200);
+      }).send({
+        name: user.name,
+        email: user.email,
+        id: user._id,
+      });
     })
     .catch((err) => {
       next(new AuthError(err.message));
