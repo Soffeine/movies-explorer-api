@@ -8,7 +8,7 @@ const getUser = (req, res, next) => {
   const { name, email } = req.body;
   User.findOne({ name, email })
     .then((user) => {
-      res.status(200).send(user);
+      res.send(user);
     })
     .catch(next);
 };
@@ -23,7 +23,7 @@ const updateInfo = (req, res, next) => {
       throw error;
     })
     .then((user) => {
-      res.status(200).send({
+      res.send({
         name: user.name,
         email: user.email,
       });
