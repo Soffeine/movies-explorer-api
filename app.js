@@ -68,8 +68,8 @@ app.post('/signout', (req, res) => {
 
 app.use(auth);
 
-app.use('/users', userRoutes);
-app.use('/movies', movieRoutes);
+app.use(userRoutes);
+app.use(movieRoutes);
 app.use((req, res, next) => {
   next(new NotFoundError('Такого запроса не существует'));
 });

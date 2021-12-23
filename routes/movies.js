@@ -11,10 +11,10 @@ const {
   deleteMovieValidation,
 } = require('../middlewares/validation');
 
-movieRouter.get('/', getMovies);
+movieRouter.get('/movies', getMovies);
 
-movieRouter.post('/', addToFavouritesValidation, addMovieToFavourites);
+movieRouter.post('/movies', addToFavouritesValidation, addMovieToFavourites);
 
-movieRouter.delete('/:movieId', deleteMovieValidation, deleteMovieFromFavourites);
+movieRouter.delete('movies/:movieId', deleteMovieValidation, deleteMovieFromFavourites);
 
 module.exports = movieRouter;
