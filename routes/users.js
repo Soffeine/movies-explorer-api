@@ -10,8 +10,8 @@ const { updateUserInfoValidation } = require('../middlewares/validation');
 
 userRouter.get('/users', getUsers);
 
-userRouter.get('users/me', getUser);
+userRouter.get('/users/me', getUser);
 
-userRouter.patch('users/me', updateUserInfoValidation, updateInfo);
+userRouter.patch('/users/me', updateUserInfoValidation, updateInfo);
 
 module.exports = userRouter;

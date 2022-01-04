@@ -14,8 +14,8 @@ const getUsers = (req, res, next) => {
 
 // получение данных о пользователе
 const getUser = (req, res, next) => {
-  const { id } = req.body;
-  User.findOne({ id })
+  const { _id } = req.body;
+  User.findOne({ _id })
     .then((user) => {
       res.send(user);
     })
@@ -32,10 +32,7 @@ const updateInfo = (req, res, next) => {
       throw error;
     })
     .then((user) => {
-      res.send({
-        name: user.name,
-        email: user.email,
-      });
+      res.statusCode(200).send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
