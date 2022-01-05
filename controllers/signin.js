@@ -29,15 +29,7 @@ const login = (req, res, next) => {
         NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
         { expiresIn: '7d' },
       );
-      res.cookie('jwt', token, {
-        maxAge: 3600000 * 24 * 7,
-        httpOnly: true,
-        sameSite: 'none',
-      }).send({
-        name: user.name,
-        email: user.email,
-        id: user._id,
-      });
+      res.send({ token });
     })
     .catch((err) => {
       next(new AuthError(err.message));

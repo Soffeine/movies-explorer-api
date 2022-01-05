@@ -60,11 +60,6 @@ app.use(cookieParser());
 
 app.use(signupRoute);
 app.use(signinRoute);
-app.post('/signout', (req, res) => {
-  res
-    .clearCookie('jwt')
-    .end();
-});
 
 app.use(auth);
 
