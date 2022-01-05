@@ -14,10 +14,9 @@ const getUsers = (req, res, next) => {
 
 // получение данных о пользователе
 const getUser = (req, res, next) => {
-  const { _id } = req.body;
-  User.findOne({ _id })
+  User.findById(req.user._id)
     .then((user) => {
-      res.send(user);
+      res.status(200).send(user);
     })
     .catch(next);
 };
