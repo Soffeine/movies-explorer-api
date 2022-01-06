@@ -31,11 +31,11 @@ const updateInfo = (req, res, next) => {
       throw error;
     })
     .then((user) => {
-      res.statusCode(200).send(user);
+      res.status(200).send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new ValidationError('переданы некорректные данные при создании пользователя'));
+        next(new ValidationError('переданы некорректные данные'));
       } else if (err.statusCode === 404) {
         next(new NotFoundError('Такого пользователя не существует'));
       } else {
