@@ -24,7 +24,7 @@ const getUser = (req, res, next) => {
 // редактирование информации в профиле
 const updateInfo = (req, res, next) => {
   const { name, email } = req.body;
-  return User.findByIdAndUpdate(req.user._id, { email, name }, { new: true, runValidators: true })
+  return User.findByIdAndUpdate(req.user._id, { name, email }, { new: true, runValidators: true })
     .orFail(() => {
       const error = new Error('кажется, такого пользователя не существует');
       error.statusCode = 404;
