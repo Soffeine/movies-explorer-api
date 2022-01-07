@@ -19,31 +19,19 @@ const getMovies = (req, res, next) => {
 // добавление фильма в сохраненное
 const addMovieToFavourites = (req, res, next) => {
   const owner = req.user._id;
-  const {
-    country,
-    director,
-    duration,
-    year,
-    description,
-    image,
-    trailer,
-    nameRU,
-    nameEN,
-    thumbnail,
-    movieId,
-  } = req.body;
   return Movie.create({
-    country,
-    director,
-    duration,
-    year,
-    description,
-    image,
-    trailer,
-    nameRU,
-    nameEN,
-    thumbnail,
-    movieId,
+    // country,
+    // director,
+    // duration,
+    // year,
+    // description,
+    // image,
+    // trailer,
+    // nameRU,
+    // nameEN,
+    // thumbnail,
+    // movieId,
+    ...req.body,
     owner,
   })
     .then((movie) => {
