@@ -5,7 +5,8 @@ const ForbiddenError = require('../errors/forbidden-error');
 
 // заргузка сохраненных фильмов
 const getMovies = (req, res, next) => {
-  Movie.find({})
+  const current = req.user._id;
+  Movie.find({ owner: current })
     .then((movies) => {
       res.status(200).send(movies);
     })
