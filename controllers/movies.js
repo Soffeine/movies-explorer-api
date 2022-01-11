@@ -20,17 +20,6 @@ const getMovies = (req, res, next) => {
 const addMovieToFavourites = (req, res, next) => {
   const owner = req.user._id;
   return Movie.create({
-    // country,
-    // director,
-    // duration,
-    // year,
-    // description,
-    // image,
-    // trailer,
-    // nameRU,
-    // nameEN,
-    // thumbnail,
-    // movieId,
     ...req.body,
     owner,
   })
