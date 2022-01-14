@@ -36,7 +36,7 @@ const addToFavouritesValidation = celebrate({
       }
       return url;
     }),
-    trailer: Joi.string().required().custom((url) => {
+    trailerLink: Joi.string().required().custom((url) => {
       if (!validator.isURL(url, { require_protocol: true })) {
         throw new Error('С ссылкой что-то не так!');
       }
