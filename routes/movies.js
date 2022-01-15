@@ -15,6 +15,6 @@ movieRouter.get('/movies', getMovies);
 
 movieRouter.post('/movies', addToFavouritesValidation, addMovieToFavourites);
 
-movieRouter.delete('movies/:movieId', deleteMovieValidation, deleteMovieFromFavourites);
+movieRouter.delete('/movies/:movieId', deleteMovieValidation, deleteMovieFromFavourites);
 
 module.exports = movieRouter;
